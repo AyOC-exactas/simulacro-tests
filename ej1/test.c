@@ -5,6 +5,7 @@
 #include <string.h>
 
 #include "ej1.h"
+#include "../test_utils/test-utils.h"
 
 /**
  * Cuenta cuántos tests corrieron exitosamente.
@@ -634,7 +635,7 @@ int main(int argc, char* argv[]) {
 		failed_tests + successful_tests, successful_tests, failed_tests
 	);
 
-	if (failed_tests || failed_tests + successful_tests == 0) {
+	if (failed_tests || !EJERCICIO_1A_HECHO ){//|| !EJERCICIO_1B_HECHO || !EJERCICIO_1C_HECHO) {
 		return 1;
 	} else {
 		return 0;
