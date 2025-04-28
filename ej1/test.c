@@ -634,7 +634,7 @@ int main(int argc, char* argv[]) {
 		failed_tests + successful_tests, successful_tests, failed_tests
 	);
 
-	if (failed_tests) {
+	if (failed_tests || failed_tests + successful_tests == 0) {
 		return 1;
 	} else {
 		return 0;

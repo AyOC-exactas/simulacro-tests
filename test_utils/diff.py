@@ -35,8 +35,10 @@ def diff():
         
     if errors:
         print(f"{bcolors.ANSI_COLOR_RED}error: [ABI_enforcer] Hay offsets o tamaños erróneos{bcolors.ANSI_COLOR_RESET}")
+        exit(1)
     else:
         print(f"{bcolors.ANSI_COLOR_GREEN}ok: [ABI_enforcer] Todos los offsets son correctos{bcolors.ANSI_COLOR_RESET}")
+        exit(0)
 
 
 if __name__ == "__main__":
