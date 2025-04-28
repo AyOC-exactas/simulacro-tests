@@ -1,0 +1,38 @@
+name: Autograding Tests
+
+on:
+    pull_request:
+        types: [labeled]
+        branches:
+            - main
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: self-hosted
+    container:
+      image: jorgeszabo/orga_ubuntu_24_04
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: test
+        id: test
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: test
+          setup-command: ''
+          command: cd ej1 && make valgrind_abi
+          timeout: 1
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TEST_RESULTS: "${{steps.test.outputs.result}}"
+        with:
+          runners: "test"
