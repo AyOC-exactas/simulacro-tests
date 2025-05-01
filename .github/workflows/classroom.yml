@@ -15,7 +15,7 @@ jobs:
   run-autograding-tests:
     runs-on: self-hosted
     container:
-      image: jorgeszabo/orga_ubuntu_24_04
+      image: makobotsh/ayoc_ubuntu_python
     if: github.actor != 'github-classroom[bot]'
     steps:
       - name: Checkout code
